@@ -32,7 +32,7 @@ function start(){
     cont.style= "";
 
     txt = inp.value.split(" ");
-    console.log(txt);
+    alert("Para ler isso vai demorar: "+ (txt.length * s) / 1000) + " Segundos;" 
 
    st = setInterval(()=>{
     if(i >= txt.length){
