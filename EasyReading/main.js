@@ -1,6 +1,6 @@
 const inp = document.getElementById("inp");
 const cont = document.getElementById("cont");
-var on = false, st, txt = "", i = 0, s = 100;
+var on = false, st, txt = "", i = 0, s = 250;
 
 inp.select();
 
