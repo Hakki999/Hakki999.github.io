@@ -1,0 +1,106 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: black;
+    background-image: url(./img/bk.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#card{
+    width: 40%;
+    height: 60%;
+
+    min-width: 500px;
+    min-height: 500px;
+    max-width: 650px;
+    max-height: 650px;
+
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+
+    border-radius: 8px;
+
+    background-color: rgb(250, 245, 235);
+}
+
+#title{
+    width: 100%;
+    height: 11.5%;
+
+    border-radius: 8px 8px 0px 0px;
+
+    background-color: rgb(220, 215, 205);
+}
+
+#ous{
+    width: 20%;
+    height: 100%;
+
+    margin-left: 5%;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#ous > span{
+    width: 18px;
+    height: 18px;
+
+    border-radius: 80%;
+
+    background-color: aqua;
+}
+
+#ous span:nth-child(1n){
+    background-color: red;
+}
+
+#ous span:nth-child(2n){
+    background-color: blue;
+}
+#ous span:nth-child(3n){
+    background-color: green;
+}
+
+h1{
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+
+#btnC{
+    width: 100%;
+    height: 30%;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+button{
+    font-size: 1.5rem;
+    padding: 1vw;
+    border-radius: 4px;
+}
+
+.nk{
+    width: 50%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
