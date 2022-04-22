@@ -49,7 +49,7 @@ if(on == true){
  root.scrollTop= (hi*101) * p;
 }
 }
-scrollMove(2)
+scrollMove(0)
 
 function scrollMove(id){
     
