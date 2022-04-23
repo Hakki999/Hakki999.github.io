@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> 
+    <link rel="stylesheet" href="./style.css">
+    <link rel="shortcut icon" href="./img/logo.png" type="image/x-icon">
+    <title>Portifolio</title>
+</head>
+<body>
+    <div id="cursor">
+        <span id="smallC" class="cursor" style="display: none;"></span>
+        <span id="bigC" class="cursor" style="display: none;"></span>
+    </div>
+    <nav id="navM">
+        <span id="menuOp" class="hove" onclick="openM()">=</span>
+        <ul id="ulMenu">
+            <li class="hove nv" onclick="scrollMove(0)">Project</li>
+            <li class="hove nv" onclick="scrollMove(1)">About</li>
+            <li class="hove nv" onclick="scrollMove(2)">Contact</li>
+        </ul>
+    </nav>
+    <div id="root">
+        <div class="page">
+            <h1 id="tlP" class="hove">Some of my projects</h1>
+            <div id="projetos">
+                <div class="cell" i="0"><img src="./img/logo.png" alt=""><h3>cell-1</h3></div>
+                <div class="cell" i="0"><img src="./img/logo.png" alt=""><h3>cell-2</h3></div>
+                <div class="cell" i="0"><img src="./img/logo.png" alt=""><h3>cell-3</h3></div>
+                <div class="cell" i="0"><img src="./img/logo.png" alt=""><h3>cell-4</h3></div>
+            </div>
+        </div>
+        <div class="page"></div>
+        <div class="page">
+            <ul class="contactUl">
+                <li class="hove">Email: <a class="co" href="#" onclick="copiar(0)">josemiguelbar9@gmail.com</a></li>
+                <li class="hove">WhatsApp: <a class="co" href="#" onclick="copiar(1)">+55 (64) 999283566</a></li>
+                <li class="hove">Linkedin: <a href="https://www.linkedin.com/in/jos%C3%A9-miguel-barcelos-80810a236/">Linkedin</a></li>
+                <li class="hove">Github: <a href="https://github.com/Hakki999">github.com/Hakki999</a></li>
+            </ul>
+            <input type="text" id="copy" style="opacity: 0%;">
+        </div>
+        
+    </div>
+    <script src="./main.js"></script>
+    <script src="./src/mouse.js"></script>
+    <script src="./src/pageP.js"></script>
+</body>
+</html>
