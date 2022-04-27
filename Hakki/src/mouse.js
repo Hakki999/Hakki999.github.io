@@ -1,4 +1,7 @@
+const mag = document.querySelectorAll(".mag");
+const hover = document.querySelectorAll(".hove");
 sl = 1;
+
 $(window).on("mousemove", e => {
     m(e, sl, 1);
 })
@@ -12,7 +15,7 @@ $(window).on("mouseout", e => {
     m(e, 0.0000000000001, 0.00000000000001)
 })
 
-const hover = document.querySelectorAll(".hove");
+
 
 hover.forEach((h)=>{
     h.addEventListener("mousemove", e => {
@@ -20,5 +23,21 @@ hover.forEach((h)=>{
     })
     h.addEventListener("mouseleave", e => {
         sl = 1;
+    })
+})
+
+//-----------------------
+
+
+mag.forEach(btn => {
+    btn.addEventListener("mousemove", e => {
+        const position = btn.getBoundingClientRect();
+        const x = e.pageX - position.left - position.width / 2;
+        const y = e.pageY - position.top - position.height / 2;
+
+        btn.children[0].style.transform = "translate(" + x * 0.3 + "px, " + y * 0.5 + "px)";
+    });
+    btn.addEventListener("mouseleave", e => {
+        btn.children[0].style.transform = "";
     })
 })
