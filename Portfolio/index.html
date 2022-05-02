@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="shortcut icon" href="./img/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="./style.css">
+    <title>José Miguel</title>
+</head>
+
+<body>
+    <div class="cursor seg" style="display: none;">
+    </div>
+    <div class="cursor prin" style="display: none;"></div>
+    <nav class="navBar">
+        <ul>
+            <li class="hover navli act" act="Move" altB="2rem" onclick="moveScroll(0)">Home</li>
+            <li class="hover navli act" act="Move" altB="2rem" onclick="moveScroll(1)">Projects</li>
+            <li class="hover navli act" act="Move" altB="2rem" onclick="moveScroll(2)">About</li>
+            <li class="hover navli act" act="Move" altB="2rem" onclick="moveScroll(3)">Contact</li>
+        </ul>
+    </nav>
+    <div class="root">
+        <div class="page home" style="--lf: 0; --tp: 0;">
+            <div id="texto-home">
+                <h1 class="revel-home">Hello,</h1>
+                <h2 class="revel-home">My name is José Miguel<br> and I am a programming enthusiast.
+                    <br> Welcome to my Portfolio.
+                </h2>
+                <button class="hover act revel-home" act="Move" altB="0.5rem" onclick="moveScroll(1)">Projects  </button>
+            </div>
+            <img class="gif-home" src="https://media.giphy.com/media/du3J3cXyzhj75IOgvA/giphy.gif" alt="">
+        </div>
+        <div class="page projetos" style="--lf: 1; --tp: 1;">
+        </div>
+        <div class="page sobre" style="--lf: 2; --tp: 2;">Sobre</div>
+        <div class="page contato" style="--lf: 3; --tp: 3;">
+            <div class="cardContato">
+                <div class="revel-contato">
+                    <label><strong>Email:</strong></label>
+                    <input onclick="copy(0)" type="text" act="Copy" class="copy hover act"
+                        value="josemiguelbar9@gmail.com" altB="0.5rem">
+                </div>
+                <hr>
+                <div class="revel-contato">
+                    <label><strong>WhatsApp:</strong></label>
+                    <input onclick="copy(0)" altB="0.5rem" type="text" act="Copy" class="copy hover act"
+                        value="+55 (64) 999283566">
+                </div>
+                <hr>
+                <div class="revel-contato">
+                    <label><strong>Linkedin: </strong></label>
+                    <a target="_blank" class="act  hover" act="Open" altB="0.5rem"
+                        href="https://www.linkedin.com/in/jos%C3%A9-miguel-barcelos-80810a236/">José Miguel</a>
+                </div>
+                <hr>
+                <div class="revel-contato"><label><strong>Github: </strong></label>
+                    <a target="_blank" class="act  hover" act="Open" altB="0.5rem"
+                        href="https://github.com/Hakki999">Hakki999</a>
+                </div>
+                <hr>
+            </div>
+        </div>
+    </div>
+    <script src="./main.js"></script>
+</body>
+
+</html>
