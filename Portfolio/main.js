@@ -24,7 +24,7 @@ function tam() {
     w = window.innerWidth / 100;
     h = window.innerHeight / 100;
 
-    moveScroll(1);
+    moveScroll(0);
 }
 
 
