@@ -2,6 +2,9 @@ const cursor = document.getElementsByClassName("cursor");
 const hover = document.querySelectorAll(".hover");
 const root = document.getElementsByClassName("root")[0];
 const Action = document.querySelectorAll(".act");
+const vd = document.getElementsByClassName("vd");
+const cellProjeto = document.querySelectorAll(".cell-projeto");
+const page = document.getElementsByClassName("page");
 
 var scale = [1, 1], w = y = sy = p = 0, on = true;
 var pageNome = [
@@ -11,6 +14,20 @@ var pageNome = [
     'contato'
 ];
 
+function loadingOk(){
+    document.getElementsByClassName("loading")[0].style= "display: none;";
+    root.style= "";
+}
+
+tam();
+function tam() {
+    w = window.innerWidth / 100;
+    h = window.innerHeight / 100;
+
+    moveScroll(1);
+}
+
+
 function revelP(){
     var r = document.querySelectorAll(".revel-"+pageNome[p]);
     r.forEach(r => {
@@ -19,7 +36,6 @@ function revelP(){
     let i = 0;
 
     let st = setInterval(()=>{
-        console.log("Okl");
         if(i < r.length){
             r[i].setAttribute("style", "animation: ap 0.5s linear normal;");
             i++;
@@ -27,14 +43,6 @@ function revelP(){
             clearInterval(st);
         }
     }, 300)
-}
-
-tam();
-function tam() {
-    w = window.innerWidth / 100;
-    h = window.innerHeight / 100;
-
-    moveScroll(0);
 }
 
 function moveScroll(i) {
@@ -49,7 +57,7 @@ function moveScroll(i) {
         $(".navli").eq(p).attr("style", "list-style: disc; text-shadow: 0.35rem 0.35rem 3.4px rgb(10, 10, 10, 0.3);");
 
         $('.root').animate({
-            scrollTop: (h*100.5)*p,
+            scrollTop: (h*100)*p,
             scrollLeft: (w*100)*p
         }, 500);
 
@@ -91,8 +99,7 @@ $(".root").scroll(function () {
 
     if (Math.abs(lastScrollTop - nowScrollTop) >= delta) {
         if (nowScrollTop > lastScrollTop) {
-            if (on == true && p < 3) {
-                console.log("down");
+            if (on == true && p < page.length) {
                 p++;
                 moveScroll(p);
             }
@@ -111,4 +118,3 @@ function copy(i){
     document.execCommand('copy');
     document.getSelection().removeAllRanges()
 }
-
