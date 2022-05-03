@@ -6,37 +6,59 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <link rel="shortcut icon" href="./img/logo.png" type="image/x-icon">
+    <link rel="shortcut icon" href="./img/J1.png" type="image/x-icon">
     <link rel="stylesheet" href="./style.css">
     <title>José Miguel</title>
 </head>
 
-<body>
+<body onload="loadingOk()">
+    <div class="loading">
+
+    </div>
     <div class="cursor seg" style="display: none;">
     </div>
     <div class="cursor prin" style="display: none;"></div>
     <nav class="navBar">
         <ul>
             <li class="hover navli act" act="Move" altB="2rem" onclick="moveScroll(0)">Home</li>
-            <li class="hover navli act" act="Move" altB="2rem" onclick="moveScroll(1)">Projects</li>
+            <li class="hover navli act" act="Move" altB="2rem" onclick="moveScroll(1)">Projects</li> 
             <li class="hover navli act" act="Move" altB="2rem" onclick="moveScroll(2)">About</li>
             <li class="hover navli act" act="Move" altB="2rem" onclick="moveScroll(3)">Contact</li>
         </ul>
     </nav>
-    <div class="root">
+    <div class="root" style="display: none;">
         <div class="page home" style="--lf: 0; --tp: 0;">
             <div id="texto-home">
                 <h1 class="revel-home">Hello,</h1>
                 <h2 class="revel-home">My name is José Miguel<br> and I am a programming enthusiast.
                     <br> Welcome to my Portfolio.
                 </h2>
-                <button class="hover act revel-home" act="Move" altB="0.5rem" onclick="moveScroll(1)">Projects  </button>
+                <button class="hover act revel-home" act="Move" altB="0.5rem" onclick="moveScroll(1)">Projects </button>
             </div>
             <img class="gif-home" src="https://media.giphy.com/media/du3J3cXyzhj75IOgvA/giphy.gif" alt="">
         </div>
-        <div class="page projetos" style="--lf: 1; --tp: 1;">
+
+         <div class="page projetos" style="--lf: 1; --tp: 1;" >
+
+            <div class="cell-projeto hover act revel-projetos" act="Open" altB="0.5rem">
+                <img src="./img/138-1382493_dark-city-wallpapers-black-city-wallpaper-4k.jpg" alt="Projeto"
+                    class="cell-projeto-img">
+                <h1>Nome</h1>
+                <p>Deescricao asifohdf uisgdugafygdfyuadsgfuadsgi</p>
+            </div>
+            <div class="cell-projeto hover act revel-projetos" act="Open" altB="0.5rem">
+                <img src="./img/138-1382493_dark-city-wallpapers-black-city-wallpaper-4k.jpg" alt="Projeto"
+                    class="cell-projeto-img">
+                <h1>Nome</h1>
+                <p>Deescricao asifohdf uisgdugafygdfyuadsgfuadsgi</p>
+            </div>
         </div>
-        <div class="page sobre" style="--lf: 2; --tp: 2;">Sobre</div>
+
+        <div class="page sobre" style="--lf: 2; --tp: 2;">
+            <h3>
+                O Presidente Abe, como é carinhosamente chamado, foi assassinado em 14 de abril de 1865. A comoção foi grande entre os americanos da época. Foi assim, nesse sentido de perda e tristeza muito profundo, que o poeta Walt Whitman escreveu esse que foi o único poema antológico durante toda sua vida.
+            </h3>
+        </div>
         <div class="page contato" style="--lf: 3; --tp: 3;">
             <div class="cardContato">
                 <div class="revel-contato">
