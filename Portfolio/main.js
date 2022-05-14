@@ -59,7 +59,7 @@ function moveScroll(i) {
         $('.root').animate({
             scrollTop: (h*100)*p,
             scrollLeft: (w*100)*p
-        }, 400);
+        }, 450);
 
 
         setTimeout(() => {
