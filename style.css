@@ -177,8 +177,21 @@ body:hover .cursor{
     align-items: center;
 }
 
+
+button{
+    font-size: 1.15rem;
+    padding: 0.3rem;
+    background-color: var(--corP);
+    border-radius: 4px;
+    border: none;
+    color: white;
+    float: right;
+    text-shadow: 1px -1px 1px black;
+    position: absolute;
+}
+
 .projetos button{
-    right: 0%;
+    right: 10%;
     bottom: 5%;
 }
 
@@ -238,22 +251,6 @@ body:hover .cursor{
 #texto-home h2{
     font-size: 3rem;
 }
-
-button{
-    font-size: 1.15rem;
-    padding: 0.3rem;
-    background-color: var(--corP);
-    border-radius: 4px;
-    border: none;
-    color: white;
-    float: right;
-    margin-right: 20%;
-    margin-top: 5%;
-    text-shadow: 1px -1px 1px black;
-    position: absolute;
-}
-
-
 
 @keyframes ap{
     0%{
@@ -338,10 +335,6 @@ button{
     width: 500px;
 }
 
-#left-sobre{
-    width: 40%;
-    height: 45%;
-}
 #left-sobre h3{
     width: 90%;
     padding: 5%;
@@ -365,5 +358,31 @@ button{
 
     .navBar{
         width: 100%;
+        background-color: rgba(255, 255, 255, 0.801);
+    }
+
+    .gif-home{
+        display: none;
+    }
+
+    .home button {
+        width: 100%;
+        bottom: 5%;
+        left: 0;
+    }
+    .projetos button {
+        width: 100%;
+        bottom: 5%;
+        left: 0;
+    }
+    .sobre button{
+        display: none;
+    }
+    #prog{
+        position: absolute;
+        top: 0;
+    }
+    .cardContato{
+        border-radius: 0px;
     }
 }
