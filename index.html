@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="./img/code-solid.svg" type="image/x-icon">
+    <title>Portfolio</title>
+</head>
+
+<body>
+    <div class="pagina_A pg">
+        <img class="ona" id="code_icon" src="./img/code-solid.svg" alt="</>">
+
+        <div class="ona" id="apre_A">
+            <h1>José Miguel</h1>
+            <h2>Developer, WebDesing</h2>
+        </div>
+
+        <button class="ona" onclick="next(1, 0)">
+            Next
+        </button>
+    </div>
+
+    <div class="pagina_B pg" style="display: none; z-index: 1;">
+        <h1 class="titulo">
+            Quem eu sou?
+        </h1>
+        <p>i tempora mollitia vel beatae quidem aut blanditiis ducimus aut sunt veniam. Ut veniam voluptas id itaque
+            dolores ut dolorem autem qui sequi impedit ex sunt repellendus. 33 reprehenderit quidem 33 ipsa veniam et
+            praesentium debitis est ullam voluptas eum eaque illo ut iste odio. Aut autem ipsa ad dolore facilis quo
+            illo sequi est laudantium quos in corrupti molestiae in internos asperiores.</p>
+
+
+        <h1 class="tituloP">
+            Meus Projetos
+        </h1>
+
+        <div class="pjCont">
+            <div class="pj">
+                <img src="">
+                <h2>Vazio</h2>
+            </div>
+            <div class="pj">
+                <img src="">
+                <h2>Vazio</h2>
+            </div>
+            <div class="pj">
+                <img src="">
+                <h2>Vazio</h2>
+            </div>
+        </div>
+
+        <button onclick="next(2, 1)">
+            Next
+        </button>
+
+    </div>
+
+    <div class="pagina_C pg" style="display: none; z-index: 1;">
+        <h1 class="tituloC">
+            Contato
+        </h1>
+
+        <div class="contC">
+            <h2>WhatsApp: (64) 99283566</h2>
+            <h2>Email: josemiguelbar9@gmail.com</h2>
+            <h2>LinkedIn</h2>
+            <h2>GitHub</h2>
+        </div>
+
+        <button onclick="next(0, 2)">
+            Back
+        </button>
+    </div>
+
+    <script src="./main.js"></script>
+</body>
+
+</html>

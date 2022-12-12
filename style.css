@@ -1,0 +1,216 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
+
+* {
+    margin: 0;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    font-family: 'Comfortaa', cursive;
+    background-image: url(https://cdn.pixabay.com/photo/2016/11/30/20/58/programming-1873854_960_720.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+.pagina_A {
+    width: 100vw;
+    height: 100vh;
+    background-image: url(./img/BK_A.png);
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: black;
+    color: white;
+    z-index: 10;
+}
+
+#code_icon {
+    width: 4rem;
+    margin: 5% 15% 0%;
+}
+
+#apre_A {
+    width: 35rem;
+    margin: 40vh 5vw 0;
+    font-size: 2.5rem;
+    text-align: center;
+}
+
+#apre_A h2 {
+    padding: 10px;
+    font-size: 1.6rem;
+    color: rgb(150, 150, 150);
+}
+
+button {
+    width: 75px;
+    height: 35px;
+    background-color: transparent;
+    backdrop-filter: blur(2px);
+    border: 1px solid black;
+    border-radius: 2px;
+    font-family: 'Comfortaa', cursive;
+    font-weight: 300;
+}
+
+.pagina_A button {
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.5);
+    margin: 0vw 60vw;
+}
+
+.pagina_B {
+    width: 100vw;
+    height: 200vh;
+    background-image: url(./img/BK_B.jpg);
+    background-repeat: no-repeat;
+    background-size: 100vw 135vh;
+    background-position: left top;
+    background-color: white;
+
+}
+
+.titulo {
+    text-align: center;
+    transform: translateY(10vh);
+    font-size: 2.5rem;
+}
+
+.pagina_B p {
+    width: 30vw;
+    font-size: 1.3rem;
+    text-align: center;
+    margin: 15vh 50vw 0;
+}
+
+.tituloP {
+    text-align: center;
+    transform: translateY(55vh);
+    font-size: 2.5rem;
+}
+
+.pjCont {
+    width: 100%;
+    transform: translateY(70vh);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.pj {
+    width: 225px;
+    height: 300px;
+}
+
+.pj img {
+    width: 100%;
+    height: 80%;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    background-color: #CECCC9;
+}
+
+.pj h2 {
+    width: calc(100% - 2px);
+    height: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid black;
+    border-top: 0;
+    font-size: 2rem;
+}
+
+.pagina_B button {
+    transform: translate(calc(50vw - 37.5px), 72vh);
+}
+
+.pagina_C {
+    width: 100%;
+    height: 100%;
+    background-image: url(./img/BK_C.png);
+    background-position: left bottom;
+    background-size: calc((100vw + 100vh) / 2.3);
+    background-repeat: no-repeat;
+    background-color: white;
+}
+
+.tituloC {
+    font-size: 2.5rem;
+
+    transform: translate(calc(100vw/4), 6vh);
+}
+
+.contC {
+    width: calc(100vw/2);
+    height: calc(100vh/3);
+    transform: translate(50vw, 20vh);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+
+}
+
+.pagina_C button {
+    transform: translate(72.5vw, 30vh);
+}
+
+
+@keyframes page {
+    0% {
+        z-index: 99;
+        transform: translateY(-200vh);
+        position: absolute;
+        top: 0;
+    }
+
+    100% {
+        z-index: 99;
+        transform: translateY(0);
+        position: absolute;
+        top: 0;
+    }
+}
+
+@keyframes pagee {
+    100% {
+        z-index: 99;
+        transform: translateX(100vh);
+        position: absolute;
+        top: 0;
+    }
+
+    0% {
+        z-index: 99;
+        transform: translateX(0);
+        position: absolute;
+        top: 0;
+    }
+}
+
+.pg {
+    position: absolute;
+}
+
+@keyframes toLeft {
+    100% {
+        z-index: 100;
+        transform: translateX(-100vh);
+        position: absolute;
+        top: 0;
+    }
+
+    0% {
+        z-index: 100;
+        transform: translateX(0);
+        position: absolute;
+        top: 0;
+    }
+}
