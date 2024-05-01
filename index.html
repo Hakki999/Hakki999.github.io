@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="manifest" href="manifest.json">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+
+        iframe{
+            width: 100vw;
+            height: 100vh;
+
+            
+        }
+    </style>
+</head>
+<body>
+    <iframe src="https://www.brmangas.net/" frameborder="0"></iframe>
+    <script>
+        // Instalando o Service Worker
+self.addEventListener('install', function(event) {
+    event.waitUntil(
+        caches.open('cache-v1').then(function(cache) {
+            return cache.addAll([
+                '/',
+                '/index.html',
+                '/styles.css',
+                '/main.js',
+                '/img.png'
+                // Adicione aqui outros recursos que você deseja que sejam cacheados
+            ]);
+        })
+    );
+});
+
+// Interceptando requisições e respondendo com cache
+self.addEventListener('fetch', function(event) {
+    event.respondWith(
+        caches.match(event.request).then(function(response) {
+            return response || fetch(event.request);
+        })
+    );
+});
+    </script>
+</body>
+</html>

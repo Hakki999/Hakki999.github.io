@@ -1,0 +1,15 @@
+{
+    "name": "Manga",
+    "short_name": "MeuPWA",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#ffffff",
+    "icons": [
+      {
+        "src": "/img.png",
+        "type": "image/png",
+        "sizes": "192x192"
+      }
+    ]
+  }
