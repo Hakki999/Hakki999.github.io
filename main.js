@@ -126,7 +126,7 @@ uploadPdf1.addEventListener('change', async (e) => {
             if (pdfBytes1) {
                 try {
                     // Carregar a imagem da pasta 'img' com o nome 'qrcode.jpeg'
-                    const imageBytes = await fetchImageAsArrayBuffer('./img/qrcode.jpeg');
+                    const imageBytes = await fetchImageAsArrayBuffer('./qrcode.jpeg');
 
                     // Inserir a imagem no PDF com rotação de 90 graus
                     const updatedPdfBytes1 = await insertJpegInPdf(pdfBytes1, imageBytes, temp.imgY, temp.imgX, temp.tm, (temp.tm + 100), 90);
