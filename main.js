@@ -21,7 +21,7 @@ async function fetchImageAsArrayBuffer(imagePath) {
 function generateName(n) {
 
 
-    let nome = id[0].value + "_RD_" + n + "_" + id[1].value + "_R00";
+    let nome = id[1].value + "_RD_" + n + "_" + id[0].value + "_R00";
     console.log(nome);
     return nome;
 }
