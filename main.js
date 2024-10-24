@@ -2,6 +2,60 @@ const uploadPdf1 = document.getElementById('upload-pdf-1');
 const uploadPdf2 = document.getElementById('upload-pdf-2');
 const result = document.getElementById('result');
 const id = document.getElementsByClassName("id");
+const recorte = document.getElementById("recorte");
+const video = document.getElementById("video");
+var url_atual = window.location.href;
+var verUrl = url_atual.split("");
+
+
+var videos = [
+    "https://cdn.pixabay.com/video/2023/11/26/190776-888535446_tiny.mp4",
+    "https://cdn.pixabay.com/video/2024/07/27/223459_large.mp4",
+    "https://cdn.pixabay.com/video/2024/06/06/215484_tiny.mp4",
+    "https://cdn.pixabay.com/video/2024/03/04/202982-919365848_tiny.mp4",
+    "https://cdn.pixabay.com/video/2024/03/04/202982-919365848_tiny.mp4",
+    "https://cdn.pixabay.com/video/2023/03/14/154726-808562497_tiny.mp4",
+    "https://cdn.pixabay.com/video/2024/03/04/202877-919288692_tiny.mp4",
+    "https://cdn.pixabay.com/video/2020/05/07/38388-418005845_tiny.mp4",
+    "https://cdn.pixabay.com/video/2020/05/07/38388-418005845_tiny.mp4",
+    "https://cdn.pixabay.com/video/2020/05/07/38388-418005845_tiny.mp4",
+    "https://cdn.pixabay.com/video/2020/05/07/38388-418005845_tiny.mp4"
+]
+
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min) + min);
+  }
+  
+
+function getRandom() {
+    let max = videos.length;
+
+    return videos[getRandomInt(0, max)];
+}
+
+video.src = getRandom();
+
+
+verUrl.forEach(e => {
+    if(e == "?"){
+        console.log("Possui um encaminhamento...");
+
+        let dadosUrl = url_atual.split("?")[1].split("&");
+        if(dadosUrl[0] == undefined) dadosUrl[0] = "";
+        if(dadosUrl[1] == undefined) dadosUrl[1] = "";
+
+            id[0].value = dadosUrl[0];
+            id[1].value = dadosUrl[1];
+    }
+})
+
+
+
+
+
+
 
 let pdfBytes1;
 let pdfBytes2;
@@ -19,8 +73,9 @@ async function fetchImageAsArrayBuffer(imagePath) {
 }
 
 function generateName(n) {
-
-
+    console.log(recorte.value);
+    
+    if(recorte.value == "on") n = "RECORTE";
     let nome = id[1].value + "_RD_" + n + "_" + id[0].value + "_R00";
     console.log(nome);
     return nome;
