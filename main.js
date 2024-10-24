@@ -155,7 +155,7 @@ uploadPdf1.addEventListener('change', async (e) => {
         });
 
         const sizesF = [
-            { width: 2384, height: 3370, folha: "A0", imgX: 0, imgY: 0, tm: 200 },
+            { width: 2384, height: 3370, folha: "A0", imgX: 2850, imgY: 1990, tm: 200 },
             { width: 1684, height: 2384, folha: "A1", imgX: 1890, imgY: 1284, tm: 200 },
             { width: 1191, height: 1684, folha: "A2", imgX: 1280, imgY: 870, tm: 120 },
             { width: 842, height: 1191, folha: "A3", imgX: 50, imgY: 790, tm: 120 },
