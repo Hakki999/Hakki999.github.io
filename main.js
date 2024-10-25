@@ -13,13 +13,29 @@ var videos = [
     "https://cdn.pixabay.com/video/2024/07/27/223459_large.mp4",
     "https://cdn.pixabay.com/video/2024/06/06/215484_tiny.mp4",
     "https://cdn.pixabay.com/video/2024/03/04/202982-919365848_tiny.mp4",
-    "https://cdn.pixabay.com/video/2024/03/04/202982-919365848_tiny.mp4",
     "https://cdn.pixabay.com/video/2023/03/14/154726-808562497_tiny.mp4",
     "https://cdn.pixabay.com/video/2024/03/04/202877-919288692_tiny.mp4",
     "https://cdn.pixabay.com/video/2020/05/07/38388-418005845_tiny.mp4",
     "https://cdn.pixabay.com/video/2020/05/07/38388-418005845_tiny.mp4",
     "https://cdn.pixabay.com/video/2020/05/07/38388-418005845_tiny.mp4",
-    "https://cdn.pixabay.com/video/2020/05/07/38388-418005845_tiny.mp4"
+    "https://cdn.pixabay.com/video/2020/05/07/38388-418005845_tiny.mp4",
+    "https://cdn.pixabay.com/video/2024/01/21/197564-905005767_tiny.mp4",
+    "https://cdn.pixabay.com/video/2024/06/10/216058_tiny.mp4",
+    "https://cdn.pixabay.com/video/2020/08/14/47213-451041047_tiny.mp4",
+    "https://cdn.pixabay.com/video/2024/05/25/213616_tiny.mp4",
+    "https://cdn.pixabay.com/video/2023/10/08/184069-872413642_tiny.mp4",
+    "https://cdn.pixabay.com/video/2023/12/09/192649-892970391_tiny.mp4",
+    "https://cdn.pixabay.com/video/2023/11/10/188595-883402169_tiny.mp4",
+    "https://cdn.pixabay.com/video/2023/09/30/182970-869947284_tiny.mp4",
+    "https://cdn.pixabay.com/video/2023/07/04/169951-842348732_tiny.mp4",
+    "https://cdn.pixabay.com/video/2021/10/05/90877-629483574_tiny.mp4",
+    "https://cdn.pixabay.com/video/2022/03/18/111204-689949818_tiny.mp4",
+    "https://cdn.pixabay.com/video/2021/07/18/81945-577442929_tiny.mp4",
+    "https://cdn.pixabay.com/video/2021/08/04/83880-585600454_tiny.mp4",
+    "https://cdn.pixabay.com/video/2020/12/15/59291-492700392_tiny.mp4",
+    "https://cdn.pixabay.com/video/2020/08/30/48569-454825064_tiny.mp4",
+    "https://cdn.pixabay.com/video/2016/05/12/3134-166335905_tiny.mp4",
+    "https://cdn.pixabay.com/video/2016/05/12/3134-166335905_tiny.mp4"
 ]
 
 function getRandomInt(min, max) {
