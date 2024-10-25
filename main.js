@@ -75,7 +75,7 @@ async function fetchImageAsArrayBuffer(imagePath) {
 function generateName(n) {
     console.log(recorte.value);
     
-    if(recorte.value == "on") n = "RECORTE";
+    if(recorte.checked) n = "RECORTE";
     let nome = id[1].value + "_RD_" + n + "_" + id[0].value + "_R00";
     console.log(nome);
     return nome;
