@@ -8,8 +8,32 @@
         <title>Projetos</title>
         <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
-        <link rel="shortcut icon" href="https://images.vexels.com/media/users/3/156023/isolated/preview/347aa321d71c6f490ef3afb6b9419f3f-silhueta-da-torre-eiffel.png" type="image/x-icon">
+        <link rel="shortcut icon" style=" filter: invert(100%);" href="https://images.vexels.com/media/users/3/156023/isolated/preview/347aa321d71c6f490ef3afb6b9419f3f-silhueta-da-torre-eiffel.png" type="image/x-icon">
         <style>
+            .black{
+                width: 100vw;
+                height: 100vh;
+                background-color: transparent;
+                position: absolute;
+                z-index: 0;
+                top: 0;
+                animation: open normal linear 0.5s;
+            }
+
+            @keyframes open {
+                0%{
+                    background-color: black;
+                    z-index: 99999;
+                    opacity: 100%;
+                }
+                90%{
+                    opacity: 0%;
+                }
+                100%{
+                    z-index: 0;
+                }
+            }
+
             body {
                 font-family: Arial, sans-serif;
                 background-color: #f4f4f4;
@@ -116,6 +140,7 @@
     </head>
 
     <body>
+        <div class="black"></div>
         <video id="video" src="https://cdn.pixabay.com/video/2023/11/26/190776-888535446_large.mp4" autoplay muted loop></video>
         <div class="container">
             <h1>Projetos <img src="https://images.vexels.com/media/users/3/156023/isolated/preview/347aa321d71c6f490ef3afb6b9419f3f-silhueta-da-torre-eiffel.png" alt=""></h1>
