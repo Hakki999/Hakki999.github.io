@@ -1,171 +1,197 @@
+<!DOCTYPE html>
+<html lang="pt">
 
-    <!DOCTYPE html>
-    <html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rede de Distribuição Elétrica – Ferramentas</title>
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Projetos</title>
-        <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
-        <link rel="shortcut icon" style=" filter: invert(100%);" href="https://images.vexels.com/media/users/3/156023/isolated/preview/347aa321d71c6f490ef3afb6b9419f3f-silhueta-da-torre-eiffel.png" type="image/x-icon">
-        <style>
-            .black{
-                width: 100vw;
-                height: 100vh;
-                background-color: transparent;
-                position: absolute;
-                z-index: 0;
-                top: 0;
-                animation: open normal linear 0.5s;
-            }
+  <!-- Leaflet, Proj4, JSZip e toGeoJSON -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.8.1/proj4.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  <script src="https://unpkg.com/togeojson@0.16.0/togeojson.js"></script>
 
-            @keyframes open {
-                0%{
-                    background-color: black;
-                    z-index: 99999;
-                    opacity: 100%;
-                }
-                90%{
-                    opacity: 0%;
-                }
-                100%{
-                    z-index: 0;
-                }
-            }
+  <link rel="stylesheet" href="style.css">
+</head>
 
-            body {
-                font-family: Arial, sans-serif;
-                background-color: black;
-                margin: 0;
-                padding: 20px;
-                color: #fff;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                overflow-y: hidden;
-                overflow-x: hidden;
-            }
+<body>
+  <!-- Navbar -->
+  <nav>
+    <div class="tabs">
+      <button id="mapTabBtn" class="active">Mapa</button>
+      <button id="listTabBtn">Lista de Postes</button>
+      <button id="openTableBtn">Abrir Tabela</button>
+    <button id="tabela_flutuante">Edição Massiva</button>
 
-            body::-webkit-scrollbar{
-                display: none;
-            }
+    </div>
+    <div class="controls">
+      <label for="modeSelect">Modo:</label>
+      <select id="modeSelect">
+        <option value="click">Click</option>
+        <option value="utm">UTM</option>
+        <option value="ref">Por Referência</option>
+        <option value="ruler">Régua</option>
+        <option value="delete">Deletar</option>
 
-            h1 {
-                text-align: center;
-                color: #ffffff;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
+      </select>
+      <button id="openUTMModalBtn" style="display:none;">Adicionar por UTM</button>
+      <button id="clearRefBtn" style="display:none;">Limpar Ref.</button>
+      <button id="importKMZBtn">Import KMZ</button>
+      <input type="file" id="importKMZInput" accept=".kmz" />
+      <button id="exportGroupedJSONBtn">Export JSON</button>
+      <button id="importJSONBtn">Import JSON</button>
+      <input type="file" id="importJSONInput" accept=".json" />
+      <button id="toggleMapMode">Modo Satélite/Normal</button>
+    </div>
+  </nav>
 
-            h1 img{
-                width: 50px;
-                height: 50px;
-                filter: invert(100%);
-            }
+  <!-- Área do conteúdo -->
+  <div id="content">
+    <!-- Aba do Mapa -->
+    <div id="mapTab" class="tab active">
+      <div id="map"></div>
+      <div id="distanceDisplay"></div>
+      <div id="status"></div>
+    </div>
+    <!-- Aba da Lista de Postes para edição massiva -->
+    <div id="listTab" class="tab">
+      <div style="padding: 20px;">
+        <h2>Lista de Postes</h2>
+        <table id="postsTable">
+          <thead>
+            <tr>
+              <th>Massivo</th>
+              <th>Projeto</th>
+              <th onclick="OrganizarPostes('ID')">ID</th>
+              <th onclick="OrganizarPostes('poste')">POSTE</th>
+              <th>PRIMARIA</th>
+              <th>SECUNDARIA</th>
+              <th onclick="OrganizarPostes('lat')">Lat</th>
+              <th onclick="OrganizarPostes('lon')">Lon</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <button id="saveBulkBtn">Salvar Alterações</button>
+        <button id="reorgBtn">Reorganize IDs</button>
+        <button id="massivoBTN">Editar Massivo</button>
+        <button id="csvBTN">Salvar CSV</button>
+      </div>
+    </div>
+  </div>
 
-            .container {
-                position: absolute;
-                width: 600px;
-                max-width: 600px;
+  <!-- Modal para Adicionar/Editar Postes (Clique no Mapa ou Por Referência) -->
+  <div id="modalForm" class="modal">
+    <div class="modal-content">
+      <h3 id="modalTitle">Adicionar Poste</h3>
+      <label for="inputID">ID (opcional):</label>
+      <input type="text" id="inputID" placeholder="Deixe em branco para auto" />
+      <label for="inputPoste">POSTE:</label>
+      <select id="inputPoste">
+        <option value="PDT9/300">PDT9/300</option>
+        <option value="PDT9/600">PDT9/600</option>
+        <option value="PDT10/300">PDT10/300</option>
+        <option value="PDT10/600">PDT10/600</option>
+        <option value="PDT10/1000">PDT10/1000</option>
+        <option value="PDT11/300">PDT11/300</option>
+        <option value="PDT11/600">PDT11/600</option>
+        <option value="PDT11/1000">PDT11/1000</option>
+        <option value="PDT11/1500">PDT11/1500</option>
+        <option value="PDT11/2000">PDT11/2000</option>
+        <option value="PDT12/600">PDT12/600</option>
+        <option value="PDT12/1000">PDT12/1000</option>
+        <option value="PDT12/1500">PDT12/1500</option>
+        <option value="PDT12/2000">PDT12/2000</option>
+        <option value="PDT13/600">PDT13/600</option>
+        <option value="PDT13/1000">PDT13/1000</option>
+        <option value="PDT13/1500">PDT13/1500</option>
+        <option value="PDT13/2000">PDT13/2000</option>
 
-                top: 10%;
-                margin: auto;
-                background: rgba(0, 0, 0, 0.384);
-                padding: 20px;
-                border-radius: 8px;
-                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-                backdrop-filter: blur(10px);
-            }
+      </select>
+      <label for="inputPrimaria">PRIMARIA:</label>
+      <select id="inputPrimaria">
+        <option value=""></option>
+        <option value="N1">N1</option>
+        <option value="N2">N2</option>
+        <option value="N3">N3</option>
+        <option value="N4">N4</option>
+        <option value="CE1A">CE1A</option>
+        <option value="CE2">CE2</option>
+        <option value="CE3">CE3</option>
+        <option value="CE4">CE4</option>
+        <option value="B1">B1</option>
+        <option value="B2">B2</option>
+        <option value="B3">B3</option>
+        <option value="B4">B4</option>
+      </select>
+      <label for="inputSecundaria">SECUNDARIA:</label>
+      <select id="inputSecundaria">
+        <option value=""></option>
+        <option value="S1.1">S1.1</option>
+        <option value="S1.2">S1.2</option>
+        <option value="S1.3">S1.3</option>
+        <option value="S1.4">S1.4</option>
+        <option value="S3.1">S3.1</option>
+        <option value="S3.2">S3.2</option>
+        <option value="S3.3">S3.3</option>
+        <option value="S3.4">S3.4</option>
+        <option value="S4.1">S4.1</option>
+        <option value="S4.2">S4.2</option>
+        <option value="S4.3">S4.3</option>
+        <option value="S4.4">S4.4</option>
+        <option value="S1I">S1I</option>
+        <option value="S3I">S3I</option>
+        <option value="S4I">S4I</option>
+      </select>
+      <!-- Campo de distância para modo "Por Referência" (estilo CAD) -->
+      <div id="refDistance" style="display:none; margin-top:10px;">
+        <label for="inputDistance"><strong>Distância (m):</strong></label>
+        <input type="text" id="inputDistance" placeholder="Digite ou confirme a distância" />
+      </div>
+      <button id="cancelBtn" class="cancel">Cancelar</button>
+      <button id="saveBtn" class="save">Salvar</button>
+    </div>
+  </div>
 
-            video{
-                width: 100%;
-                height: 100%;
-                position: absolute;
-                top: 0px;
+  <!-- Modal para Adicionar Postes por Coordenadas UTM -->
+  <div id="modalUTM" class="modal">
+    <div class="modal-content">
+      <h3>Adicionar Poste por UTM</h3>
+      <label for="inputUTMX">UTM X:</label>
+      <input type="number" id="inputUTMX" placeholder="UTM X" />
+      <label for="inputUTMY">UTM Y:</label>
+      <input type="number" id="inputUTMY" placeholder="UTM Y" />
+      <label for="inputID_utm">ID (opcional):</label>
+      <input type="text" id="inputID_utm" placeholder="Deixe em branco para auto" />
+      <label for="inputPoste_utm">POSTE:</label>
+      <select id="inputPoste_utm">
+        <option value="PDT11/300">PDT11/300</option>
+        <option value="PDT11/600">PDT11/600</option>
+      </select>
+      <label for="inputPrimaria_utm">PRIMARIA:</label>
+      <select id="inputPrimaria_utm">
+        <option value="N1">N1</option>
+        <option value="N2">N2</option>
+        <option value="N4">N4</option>
+        <option value="CE4">CE4</option>
+      </select>
+      <label for="inputSecundaria_utm">SECUNDARIA:</label>
+      <select id="inputSecundaria_utm">
+        <option value="S1.1">S1.1</option>
+        <option value="S1I">S1I</option>
+      </select>
+      <button id="cancelUTMBtn" class="cancel">Cancelar</button>
+      <button id="saveUTMBtn" class="save">Salvar</button>
+    </div>
 
-                object-fit: cover;
-            }
 
-            input[type="text"],
-            input[type="file"],
-            button {
-                width: 100%;
-                padding: 10px;
-                margin: 10px 0;
-                border: 1px solid #ccc;
-                border-radius: 5px;
-                box-sizing: border-box;
-                transition: border-color 0.3s;
-                background-color: transparent;
-                color: #fff;
-            }
 
-            input[type="text"]:focus,
-            input[type="file"]:focus {
-                border-color: #007BFF;
-                outline: none;
-            }
+    <script src="./main.js"></script>
+    <script src="./exportDXF.js"></script>
+</body>
 
-            button {
-                background-color: #007BFF;
-                color: white;
-                border: none;
-                cursor: pointer;
-                font-size: 16px;
-            }
+</html>
 
-            button:hover {
-                background-color: #0056b3;
-            }
-
-            #result {
-                margin-top: 20px;
-                font-weight: bold;
-                text-align: center;
-            }
-
-            hr {
-                margin: 20px 0;
-                border: 1px solid #ddd;
-            }
-
-            @media (max-width: 600px) {
-                body {
-                    padding: 10px;
-                }
-            }
-        </style>
-    </head>
-
-    <body>
-        <div class="black"></div>
-        <video id="video" src="https://cdn.pixabay.com/video/2023/11/26/190776-888535446_large.mp4" autoplay muted loop></video>
-        <div class="container">
-            <h1>Projetos <img src="https://images.vexels.com/media/users/3/156023/isolated/preview/347aa321d71c6f490ef3afb6b9419f3f-silhueta-da-torre-eiffel.png" alt=""></h1>
-            <input type="text" class="id" placeholder="ID do Projeto" value=""><br>
-            <input type="text" class="id" placeholder="SS do Projeto" value=""><br>
-
-            <p>Projeto:</p>
-            <input type="file" id="upload-pdf-1" accept=".pdf" /><br>
-
-            <p>Levantamento:</p>
-            <input type="file" id="upload-pdf-2" accept=".pdf" /><br><br>
-
-            <div style="display: flex;">
-                <p>Recorte:</p>
-                <input type="checkbox"  id="recorte">
-            </div>
-            
-            <hr>
-            <button id="add-image" style="display:none;">Salvar</button>
-
-            <p id="result"></p>
-        </div>
-
-        <p>v2</p>
-        <script src="./main.js"></script>
-    </body>
-
-    </html>
