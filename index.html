@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/load.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/home.css">
+    <link rel="stylesheet" href="./css/sobre.css">
+    <link rel="stylesheet" href="./css/contato.css">
+    <title>
+        </>José Miguel</>
+    </title>
+</head>
+
+<body>
+    <div class="load"></div>
+    <nav>
+        <ul>
+            <li style="font-size: 1.5rem; cursor: default;">JM</li>
+            <li></li>
+        </ul>
+        <ul>
+            <li class="navOp"><a href="#home" onclick="scrollToSection('home')">Home</a> </li>
+            <li class="navOp"><a href="#sobre" onclick="scrollToSection('sobre')">Sobre</a></li>
+            <li class="navOp"><a href="#projetos" onclick="scrollToSection('projetos')">Projetos</a></li>
+            <li class="navOp"><a href="#contato" onclick="scrollToSection('contato')">Contato</a></li>
+            <div id="contInd">
+                <div id="indicNav" style="transform: translateY(-200%);"></div>
+            </div>
+        </ul>
+    </nav>
+    <section class="container home">
+        <video class="videoBackground" src="./css/src/HomeVideo.mp4" playsinline autoplay muted loop></video>
+        <div class="containerTextoAni">
+            <h1 id="textHome">Hello World</h1>
+        </div>
+        <div class="indicScroll">
+        </div>
+    </section>
+
+    <section class="container sobre fadeDark">
+        <div class="card">
+            <h2>Sobre Mim</h2>
+            <p>Sou um Designer e Desenvolvedor apaixonado por criar experiências digitais impactantes e intuitivas,
+                focando sempre na usabilidade e no visual.</p>
+            <p>Atuo principalmente com projetos de interfaces modernas, acessíveis e responsivas. Tenho experiência com
+                ferramentas como Figma, Adobe XD e também com stacks como HTML, CSS, JavaScript e frameworks modernos.
+            </p>
+            <p>Minha abordagem é centrada no usuário, buscando sempre soluções simples, elegantes e eficientes. Gosto de
+                explorar novas tecnologias e manter-me atualizado com as tendências de design e desenvolvimento.</p>
+        </div>
+
+        <div class="card">
+            <h2>Skills</h2>
+            <ul>
+                <li>UI/UX Design</li>
+                <li>Desenvolvimento Front-end</li>
+                <li>Motion Design</li>
+                <li>Design Minimalista</li>
+            </ul>
+        </div>
+    </section>
+
+
+
+    <section class="container projetos">
+        <video class="videoBackground" src="https://cdn.pixabay.com/video/2018/04/25/15810-266811416_tiny.mp4"
+            playsinline autoplay muted loop style="display: none;"></video>
+
+        <div class="contProjetos">
+            <h2>Projetos</h2>
+            <div class="cardsProjetos">
+                <div class="cardProjeto">Projeto 1</div>
+                <div class="cardProjeto">Projeto 2</div>
+                <div class="cardProjeto">Projeto 3</div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="container contato fadeDark">
+        <div class="card">
+            <h2>Contato</h2>
+            <p>Se você deseja iniciar um projeto, colaborar ou apenas trocar uma ideia, sinta-se à vontade para me
+                enviar uma mensagem.</p>
+            <ul class="info-list">
+                <li><strong>Email:</strong> josemiguelbar9@gmail.com</li>
+                <li><strong>Telefone:</strong> (64) 9 9928-3566</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2>Envie uma Mensagem</h2>
+            <form class="contato-form">
+                <input type="text" name="nome" placeholder="Seu Nome" required />
+                <input type="email" name="email" placeholder="Seu Email" required />
+                <textarea name="mensagem" rows="5" placeholder="Sua Mensagem" required></textarea>
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
+    </section>
+
+    <script src="./js/main.js"></script>
+    <script src="./js/scroll.js"></script>
+    <script src="./js/home.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.24/bundled/lenis.min.js"></script>
+    <script>
+        const lenis = new Lenis({
+            duration: 1.2,
+            smooth: true,
+        });
+
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+
+        requestAnimationFrame(raf);
+    </script>
+    <script>
+        const cards = document.querySelectorAll('.cardProjeto');
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.3
+        });
+
+        cards.forEach(card => {
+            observer.observe(card);
+        });
+    </script>
+
+
+</body>
+
+</html>

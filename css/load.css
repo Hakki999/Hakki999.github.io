@@ -1,0 +1,30 @@
+.load{
+    width: 100vw;
+    height: 100vh;
+
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 99999999999999;
+
+    background-color: black;
+    transition: 2s ease;
+}
+
+.loadOff{
+    display: none;
+
+    animation: aniLoadOff 1s ease;
+
+}
+
+@keyframes aniLoadOff {
+    0%{
+        display: block;
+        opacity: 1;
+    }
+    100%{
+        display: block;
+        opacity: 0;
+    }
+}

@@ -1,0 +1,112 @@
+/* sobre.css - Estilo inspirado em portfólios premiados no Awwwards */
+
+.sobre {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 100px 8%;
+  position: relative;
+  background: #0f0f0f;
+  color: #eaeaea;
+  font-family: 'Jost', sans-serif;
+  z-index: 10;
+  padding: 0px;
+  background-image: url("./src/SobreImg.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+
+
+
+.sobre .card:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+@keyframes fadeUp {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.card h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #ffffff;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.card h2::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 60px;
+  height: 3px;
+  background: #4ef4c2;
+  border-radius: 2px;
+}
+
+.card p {
+  color: #cccccc;
+  line-height: 1.8;
+  font-size: 1.1rem;
+  font-weight: 300;
+  margin-bottom: 1.5rem;
+}
+
+.card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.card ul li {
+  font-size: 1.1rem;
+  font-weight: 300;
+  color: #bbbbbb;
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 12px;
+}
+
+.card ul li::before {
+  content: "▹";
+  position: absolute;
+  left: 0;
+  color: #4ef4c2;
+  font-size: 1rem;
+  top: 0;
+}
+
+.sobre .card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 768px) {
+  .sobre {
+    padding: 60px 5%;
+    gap: 40px;
+  }
+
+  .sobre .card {
+    padding: 30px;
+  }
+
+  .card h2 {
+    font-size: 1.7rem;
+  }
+
+  .card p,
+  .card ul li {
+    font-size: 1rem;
+  }
+}
